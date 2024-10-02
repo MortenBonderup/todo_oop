@@ -1,12 +1,12 @@
-class ToDoApp {
-    constructor() {
-        this.tasks = [];
+class TodoList {
+    constructor(todoList) {
+        this.tasks = todoList;
     }
 
     addTask() {
         const taskInput = document.getElementById('new-task');
         const taskDescription = taskInput.value.trim();
-        if (taskDescription) {
+        if (taskDescription !== "") {
             this.tasks.push(taskDescription);
             taskInput.value = '';
             this.render();
@@ -25,11 +25,11 @@ class ToDoApp {
             const taskItem = document.createElement('li');
             taskItem.innerHTML = `
                 <span>${this.tasks[i]}</span>
-                <button class="delete" onclick="app.deleteTask(${i})">Delete</button>
+                <button class="delete" onclick="myTodoList.deleteTask(${i})">Delete</button>
             `;
             taskList.appendChild(taskItem);
         }
     }
 }
 
-const app = new ToDoApp();
+const myTodoList = new TodoList([]);
